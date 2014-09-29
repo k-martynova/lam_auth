@@ -24,9 +24,9 @@ module LamAuth
       end
 
       def create_or_update_by_auth_data(data)
-        user = find_or_initialize_by_login(data['login'])
+        user = find_or_initialize_by(login: data['login'])
         user.update_attributes! data.slice(*%w{email first_name last_name}).merge(
-          'userpic' => data['userpic']['icon'], 
+          'userpic' => data['userpic']['icon'],
           'profile' => data.except(*%w{login email first_name last_name userpic})
         )
         user
