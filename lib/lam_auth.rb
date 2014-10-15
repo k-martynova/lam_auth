@@ -6,30 +6,40 @@ require 'lam_auth/model'
 ActionController::Base.helper(LamAuth::Helpers)
 
 module LamAuth
+  CONFIGS = {
+    'lookatme' => {
+      'prefix' => 'lam',
+      'url' => 'http://www.lookatme.ru',
+      'api' => 'LAM',
+      'javascripts' => 'http://www.lookatme.ru/api/js/LAM.Login.js',
+    },
+    'village' => {
+      'prefix' => 'village',
+      'url' => 'http://www.the-village.ru',
+      'api' => 'VLG',
+      'javascripts' => 'http://www.the-village.ru/api/js/VLG.Login.js',
+    },
+    'furfur' => {
+      'prefix' => 'lam',
+      'url' => 'http://www.furfur.me',
+      'api' => 'OAuthLogin',
+      'javascripts' => %w{
+        http://furfur.me/api/js/OAuthLogin.js
+        http://furfur.me/api/js/OAuthLogin.furfur.js
+      }
+    }
+  }
   class << self
     def app
       @app ||= YAML.load_file(Rails.root.join("config/lam_auth.yml"))
     end
 
     def config
-      {
-        'lookatme' => {
-          'prefix' => 'lam',
-          'url' => 'http://www.lookatme.ru',
-          'api' => 'LAM',
-          'api_url' => 'http://www.lookatme.ru/api/js/LAM.Login.js',
-        },
-        'village' => {
-          'prefix' => 'village',
-          'url' => 'http://www.the-village.ru',
-          'api' => 'VLG',
-          'api_url' => 'http://www.the-village.ru/api/js/VLG.Login.js',
-        }
-      }[site]
+      CONFIGS[site]
     end
 
     def site
-      %w{lookatme village}.include?(app['site']) ? app['site'] : 'lookatme'
+      CONFIGS.include?(app['site']) ? app['site'] : 'lookatme'
     end
 
     def url
