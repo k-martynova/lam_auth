@@ -27,6 +27,15 @@ module LamAuth
         http://furfur.me/api/js/OAuthLogin.js
         http://furfur.me/api/js/OAuthLogin.furfur.js
       }
+    },
+    'wonderzine' => {
+      'prefix' => 'lam',
+      'url' => 'http://www.wonderzine.com',
+      'api' => 'OAuthLogin',
+      'javascripts' => %w{
+        http://www.wonderzine.com/api/js/OAuthLogin.js
+        http://www.wonderzine.com/api/js/OAuthLogin.wonderzine.js
+      }
     }
   }
   class << self
