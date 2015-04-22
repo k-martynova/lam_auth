@@ -1,3 +1,4 @@
-# return_url можно не указывать, если это дефолтный http://:app-domain/xd_receiver.html
-app_id: app_id
-secret: secret
+id: bla
+secret: bla
+return_url: bla
+site: lookatme
