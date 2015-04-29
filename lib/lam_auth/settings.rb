@@ -1,3 +1,5 @@
+require 'settingslogic'
+
 module LamAuth
   class Settings < Settingslogic
     source "config/lam_auth.yml"
