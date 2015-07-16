@@ -4,7 +4,7 @@ module LamAuth
   class Settings < Settingslogic
     source "config/lam_auth.yml"
 
-    HOST_URL = 'http://auth.look-at-media.com'
+    HOST_URL = 'https://auth.look-at-media.com'
 
     ROOT_URLS = {
       'lookatme'   => 'http://www.lookatme.ru',
