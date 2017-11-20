@@ -15,7 +15,7 @@ module LamAuth
         'root_url'             => LamAuth::Settings.root_url,
         'xdReceiverUrl'        => LamAuth::Settings.return_url
       )
-      javascript_tag(%|OAuthLogin.init({#{options.map{|k, v| "#{k.to_s.camelize(:lower)}: #{v.inspect}"}.join(",\n")}});|)
+      javascript_tag(%|OAuthLogin.init({#{options.map{|k, v| "#{k}: #{v.inspect}"}.join(",\n")}});|)
     end
   end
 end
