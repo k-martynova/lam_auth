@@ -4,14 +4,14 @@ module LamAuth
   class Settings < Settingslogic
     source "config/lam_auth.yml"
 
-    HOST_URL = 'https://auth.look-at-media.com'
-
     ROOT_URLS = {
       'lookatme'   => 'http://www.lookatme.ru',
-      'village'    => 'http://www.the-village.ru',
+      'village'    => 'https://www.the-village.ru',
       'furfur'     => 'http://www.furfur.me',
-      'wonderzine' => 'http://www.wonderzine.com',
+      'wonderzine' => 'https://www.wonderzine.com',
     }
+
+    HOST_URL = ROOT_URLS.fetch(site)
 
     def self.root_url
       ROOT_URLS.fetch(site)
